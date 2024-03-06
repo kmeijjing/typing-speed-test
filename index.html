@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Speed Test</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/script.js" defer></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+  />
+</head>
+<body>
+  <div class="typing-speed-test">
+    <div class="typing-speed-test__inner">
+      <h1>Typing Speed Test</h1>
+
+      <div class="typing-status">
+        <div class="circle_progress"> 
+          <span class="left"> 
+            <span class="bar" id="left-bar"></span> 
+          </span> 
+          <span class="right"> 
+            <span class="bar" id="right-bar"></span> 
+          </span>
+          <div class="left-seconds">
+            <div id="left-seconds__value" class="value"></div>
+            <div>seconds</div>
+          </div>
+        </div>
+
+        <div class="word-count status-value">
+          <div id="word-count__value" class="value"></div>
+          <caption>word/min</caption>
+        </div>
+
+        <div class="char-count status-value">
+          <div id="char-count__value" class="value"></div>
+          <caption>char/min</caption>
+        </div>
+
+        <div class="accuracy-percent status-value">
+          <div id="accuracy-percent__value" class="value"></div>
+          <caption>accuracy(%)</caption>
+        </div>
+      </div>
+
+      <div class="typing-text-section" draggable="false">
+        <p class="typing-text" id="typing-text"></p>
+        <input type="text" id="text-input" value="" />
+      </div>
+
+      <footer>
+        Copyright 2024. kmeijjing all rights reserved.
+      </footer>
+    </div>
+  </div>
+
+  <!-- 완료 모달 -->
+  <div id="modal" class="modal">
+    <div class="modal-body">
+      <button class="close-btn" id="close-btn">
+        <img src="/img/close.svg" alt="close" />
+      </button>
+
+      <div class="title">Test Complete!</div>
+      <div class="desc">
+        <p>
+          You type with the speed of
+          <strong class="wpm"><span id="wpm__value"></span> WPM</strong> (<span id="cpm__value"></span> CPM).
+        </p>
+        <p>
+          Your accuracy was <strong><span id="accuracr-percent__value"></span>%</strong>.
+        </p>
+      </div>
+      <button class="reload-btn" id="reload-btn">
+        Try again
+      </button>
+    </div> 
+  </div>
+</body>
+</html>
