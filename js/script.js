@@ -65,13 +65,26 @@ textInput.addEventListener("input", (event) => {
   // backspace 일 때,
   if (isBackspace) {
     if (currentCharPosition > 1) {
-      currentChar.classList.remove('focus');
-      currentChar.classList.remove('passed');
-      currentChar.classList.remove('failed');
-      currentCharPosition--;
-      document.getElementById(`char${currentCharPosition}`).classList.add('focus');
-      document.getElementById(`char${currentCharPosition}`).classList.remove('passed');
-      document.getElementById(`char${currentCharPosition}`).classList.remove('failed');
+      // TODO: 줄바꿈 시, 올라가게
+      if (document.getElementById(`char${currentCharPosition}`).offsetTop !== document.getElementById(`char${currentCharPosition - 1}`).offsetTop) {
+        row--;
+        typingTextItem.style.top = `-${65 * row}px`;
+        currentChar.classList.remove('focus');
+        currentChar.classList.remove('passed');
+        currentChar.classList.remove('failed');
+        currentCharPosition--;
+        document.getElementById(`char${currentCharPosition}`).classList.add('focus');
+        document.getElementById(`char${currentCharPosition}`).classList.remove('passed');
+        document.getElementById(`char${currentCharPosition}`).classList.remove('failed');
+      } else {
+        currentChar.classList.remove('focus');
+        currentChar.classList.remove('passed');
+        currentChar.classList.remove('failed');
+        currentCharPosition--;
+        document.getElementById(`char${currentCharPosition}`).classList.add('focus');
+        document.getElementById(`char${currentCharPosition}`).classList.remove('passed');
+        document.getElementById(`char${currentCharPosition}`).classList.remove('failed');
+      }
     }
   } else {
     // 문자 검사
@@ -123,15 +136,6 @@ textInput.addEventListener("input", (event) => {
   }
 });
 
-
-function startTimeWatch() {
-
-}
-
-function stopTimeWatch() {
-  
-}
-
 const leftBar = document.getElementById('left-bar');
 const rightBar = document.getElementById('right-bar');
 const per = document.getElementById('left-seconds__value');
@@ -168,7 +172,6 @@ function startTimer() {
 
 const modal = document.getElementById('modal');
 function endTimer() {
-
   cpmValue.innerText = currentCharPosition;
   const wpm = typingedWordsNumber / 5;
   wpmValue.innerText = wpm;
