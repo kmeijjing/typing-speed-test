@@ -8,8 +8,20 @@ body .typing-speed-test {
   height: 100vh;
   overflow: hidden;
 }
-body .typing-speed-test h1 {
+body .typing-speed-test header {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+body .typing-speed-test header h1 {
   margin: 0;
+}
+body .typing-speed-test header .reload-btn {
+  background: none;
+  border: none;
+  margin-right: 20px;
+  cursor: pointer;
 }
 body .typing-speed-test .typing-speed-test__inner {
   max-width: 800px;
